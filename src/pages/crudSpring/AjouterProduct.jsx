@@ -31,42 +31,42 @@ const formSchema = z.object({
     prix: z.string().min(1),
 });
 export default function AjouterProduct({fetchData}) {
-    // const { toast } = useToast()
-    // const [open, setOpen] = useState(false);
-    // const [isLoading, setIsLoading] = useState(false);
+    const { toast } = useToast()
+    const [open, setOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
 
-    // const form = useForm({
-    //     resolver: zodResolver(formSchema),
-    //     defaultValues: {
-    //       nom: '',
-    //       prix: '',
-    //     },
-    // });
+    const form = useForm({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+          nom: '',
+          prix: '',
+        },
+    });
    
 
-    // const onSubmit = async (values) => {
-    //     setIsLoading(true)
-    //     await axiosClient.post('/products',{...values}).then(res=>{
-    //         setIsLoading(false)
-    //         toast({
-    //             title: "Successfuly",
-    //             className:"bg-blue-500 text-white",
-    //             description: "Bien ajouter product",
-    //         }) 
-    //         form.setValue('nom','')
-    //         form.setValue('prix','')
-    //         fetchData()
-    //         setOpen(false)
-    //     }).catch(err=>{
-    //         console.log("err ", err);
-    //         setIsLoading(false)
-    //     })
-    // }
+    const onSubmit = async (values) => {
+        setIsLoading(true)
+        await axiosClient.post('/products',{...values}).then(res=>{
+            setIsLoading(false)
+            toast({
+                title: "Successfuly",
+                className:"bg-blue-500 text-white",
+                description: "Bien ajouter product",
+            }) 
+            form.setValue('nom','')
+            form.setValue('prix','')
+            fetchData()
+            setOpen(false)
+        }).catch(err=>{
+            console.log("err ", err);
+            setIsLoading(false)
+        })
+    }
   return (
     <>
     
-    {/* <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">
           <PlusCircle className="mr-2" /> Créer un produit
@@ -120,7 +120,7 @@ export default function AjouterProduct({fetchData}) {
           </form>
         </Form>
       </DialogContent>
-    </Dialog> */}
+    </Dialog>
     </>
   )
 }
