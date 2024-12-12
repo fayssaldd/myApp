@@ -18,40 +18,40 @@ import { axiosClient } from '../../api/axios';
 
 
 export default function Producs() {
-  const { toast } = useToast()
-    const [data, setData] = useState([])
-    const [isloading, setIsLoading] = useState(true);
-    const fetchData = async ()=>{
-      try{
-        const res = await axiosClient.get('/products');
-        setData(res.data)
-      }catch(err){
-        console.log("Error : ", err);
-      }finally{
-        setIsLoading(false);
-      }
-    }
-    const handleDelete = async (id)=>{
-      if(confirm('are you sur')){
-        await axiosClient.delete(`/products/${id}`)
-        .then(res=>{
-          toast({
-            title: "Successfuly",
-            className:"bg-red-500 text-white",
-            description: "Bien Suprimer product",
-        })  
-          fetchData()
-        }).catch(err=>{
-          console.log("err ", err);
-        })
-      }
-    }
-    useEffect(()=>{
-      fetchData()
-    },[])
+  // const { toast } = useToast()
+  //   const [data, setData] = useState([])
+  //   const [isloading, setIsLoading] = useState(true);
+  //   const fetchData = async ()=>{
+  //     try{
+  //       const res = await axiosClient.get('/products');
+  //       setData(res.data)
+  //     }catch(err){
+  //       console.log("Error : ", err);
+  //     }finally{
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   const handleDelete = async (id)=>{
+  //     if(confirm('are you sur')){
+  //       await axiosClient.delete(`/products/${id}`)
+  //       .then(res=>{
+  //         toast({
+  //           title: "Successfuly",
+  //           className:"bg-red-500 text-white",
+  //           description: "Bien Suprimer product",
+  //       })  
+  //         fetchData()
+  //       }).catch(err=>{
+  //         console.log("err ", err);
+  //       })
+  //     }
+  //   }
+  //   useEffect(()=>{
+  //     fetchData()
+  //   },[])
   return (
     <div className='flex justify-center '>
-      <AjouterProduct fetchData={fetchData} />
+      {/* <AjouterProduct fetchData={fetchData} />
     {
       isloading ? <p className='flex justify-center items-center w-full h-[80vh]'>
         <LoaderCircle className={"animate-spin"}/>
@@ -81,7 +81,7 @@ export default function Producs() {
           </TableBody>
         </Table>
       </div>
-    }
+    } */}
    
   </div>
   )
